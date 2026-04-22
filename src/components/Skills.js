@@ -1,23 +1,28 @@
+// Perfil Dev em T: especialista em Frontend, complementos em AWS Cloud e IA
 const skillGroups = [
   {
-    category: 'Frontend',
+    category: 'Frontend — Especialidade',
     icon: '🎨',
-    skills: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
+    specialist: false,
+    skills: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Next.js', 'Responsive Design'],
   },
   {
-    category: 'Backend',
-    icon: '⚙️',
-    skills: ['Node.js', 'Express', 'Python', 'REST APIs', 'GraphQL'],
+    category: 'AWS Cloud',
+    icon: '☁️',
+    specialist: false,
+    skills: ['EC2', 'S3', 'Lambda', 'CloudFront', 'RDS', 'IAM', 'Amplify'],
   },
   {
-    category: 'Banco de Dados',
-    icon: '🗄️',
-    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis'],
+    category: 'Inteligência Artificial',
+    icon: '🤖',
+    specialist: false,
+    skills: ['Claude API', 'OpenAI API', 'Prompt Engineering', 'LangChain', 'Python'],
   },
   {
-    category: 'DevOps & Ferramentas',
+    category: 'Fundamentos',
     icon: '🛠️',
-    skills: ['Git', 'Docker', 'CI/CD', 'Linux', 'AWS', 'Figma'],
+    specialist: false,
+    skills: ['Git', 'Node.js', 'REST APIs', 'Docker', 'Linux', 'Figma'],
   },
 ];
 
@@ -32,11 +37,12 @@ function Skills() {
           Tecnologias e ferramentas que utilizo para dar vida aos projetos
         </p>
         <div className="skills__grid">
-          {skillGroups.map(({ category, icon, skills }) => (
-            <div key={category} className="skill-card">
+          {skillGroups.map(({ category, icon, skills, specialist }) => (
+            <div key={category} className={`skill-card${specialist ? ' skill-card--specialist' : ''}`}>
               <div className="skill-card__header">
                 <span className="skill-card__icon">{icon}</span>
                 <h3 className="skill-card__title">{category}</h3>
+                {specialist && <span className="skill-card__badge">Especialidade</span>}
               </div>
               <div className="skill-card__tags">
                 {skills.map((skill) => (
